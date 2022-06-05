@@ -2,6 +2,8 @@ package com.example.com.generation.blogpessoal.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +44,7 @@ public class TemaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Tema> post (@RequestBody Tema tema){
+	public ResponseEntity<Tema> post (@Valid @RequestBody Tema tema){
 		return ResponseEntity.status(HttpStatus.CREATED)
 			.body(repository.save(tema));
 	}
