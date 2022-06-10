@@ -10,20 +10,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "postagem")
-
 public class Postagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
 	
 	@NotNull
 	@Size(min = 10,max = 100)
@@ -37,9 +35,8 @@ public class Postagem {
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
 	@ManyToOne
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("postagem")
 	private Tema tema;
-	
 
 	public long getId() {
 		return id;
